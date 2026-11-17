@@ -1,0 +1,8 @@
+## Interface: 16001
+## Title: CheapFeed
+## Notes: Hunter pet feed button that picks the food with the best cost per happiness.
+## Version: 0.1.0
+## OptionalDeps: Auctionator
+## SavedVariables: CheapFeedDB
+
+CheapFeed.lua
