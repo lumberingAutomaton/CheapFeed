@@ -21,7 +21,7 @@ The food list shows every food in your bags that your pet eats, best first. Unti
 
 - **Which food your pet eats:** asked directly from the game, so it matches your pet's diet.
 - **What a food is worth:** its Auctionator price if you have Auctionator, otherwise its vendor sell price. Food that can't be sold counts as free.
-- **How much happiness it gives:** based on how far the food's level is below your pet's. Food far below the pet barely raises happiness on Forever.
+- **How much happiness it gives:** based on how far the food's level is below your pet's: the further below, the less it gives.
 - **The choice:** when your pet is content or unhappy, the best value per happiness. When it's already happy, the cheapest food outright, since most of a feeding would be wasted.
 - **Learning:** if the game refuses a food as too low-level, CheapFeed stops offering it at that pet level.
 
@@ -40,4 +40,4 @@ Copy or symlink this folder into `World of Warcraft/_forever_/Interface/AddOns/C
 
 ## Compatibility
 
-Interface `16001` (WoW Forever). The happiness values for food near your pet's level are still Classic's numbers and haven't been measured on Forever yet.
+Interface `16001` (WoW Forever). The happiness bands (350 per feeding for food under 10 levels below your pet, 170 for 10–19, 80 for 20–29) are the ones other Forever hunter addons use, matching the Vanilla-era table; they haven't been measured independently.

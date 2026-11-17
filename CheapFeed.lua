@@ -9,18 +9,15 @@
 
 local ADDON = "CheapFeed"
 
--- Classic food-level rule: levels the food may be below the pet, and the
--- happiness one feeding (10 bites) gives in that band. Forever is looser than
--- Classic (a pet ate food further below than this), so food beyond the last
--- band counts as the last band; food is only treated as refused once the game
--- actually refuses it. The ratios are what matter for the choice.
--- Measured on Forever: food 16 levels below a level 21 pet gave 5 happiness.
--- The first three bands are still Classic's numbers, not yet checked.
+-- Food-level rule: how far the food may be below the pet, and the happiness one
+-- feeding (10 bites of 35/17/8) gives in that band. These are the bands two Forever
+-- hunter addons use (HunterSuite, Huntsworn), matching the Vanilla-era table.
+-- Food 30+ levels below would be refused; it still counts as the lowest band here,
+-- since food is only treated as refused once the game actually refuses it.
 local LEVEL_BANDS = {
-	{ below = 5,  happiness = 350 },
-	{ below = 10, happiness = 170 },
-	{ below = 14, happiness = 80 },
-	{ below = math.huge, happiness = 5 },
+	{ below = 9,  happiness = 350 },
+	{ below = 19, happiness = 170 },
+	{ below = math.huge, happiness = 80 },
 }
 
 local HAPPY = 3
