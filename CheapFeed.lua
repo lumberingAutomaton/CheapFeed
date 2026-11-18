@@ -196,6 +196,17 @@ local function UpdateHappiness()
 	button.max:SetText(readable(max) and ("/ " .. max) or "")
 end
 
+-- Don't rely on power events alone (they may not fire for each feeding tick):
+-- redraw the number twice a second while the button is shown. Display only.
+local sinceRedraw = 0
+button:SetScript("OnUpdate", function(_, elapsed)
+	sinceRedraw = sinceRedraw + elapsed
+	if sinceRedraw >= 0.5 then
+		sinceRedraw = 0
+		UpdateHappiness()
+	end
+end)
+
 local FEED_PET_SPELL = 6991
 local FEED_PET_ICON = (C_Spell and C_Spell.GetSpellTexture and C_Spell.GetSpellTexture(FEED_PET_SPELL))
 	or "Interface\\Icons\\Ability_Hunter_BeastTraining"
@@ -368,7 +379,9 @@ for i = 1, ROWS do
 			self:SetChecked(not self:GetChecked())
 			return
 		end
-		db.ignored[c.id] = (not self:GetChecked()) and c.name or nil
+		local ignoring = not self:GetChecked()
+		db.ignored[c.id] = ignoring and c.name or nil
+		print(("|cff40ff40CheapFeed:|r %s %s."):format(ignoring and "ignoring" or "no longer ignoring", c.name))
 		Refresh()
 	end)
 	row.check:SetScript("OnEnter", function(self)
